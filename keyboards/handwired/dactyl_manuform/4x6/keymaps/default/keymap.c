@@ -1,17 +1,13 @@
 #include QMK_KEYBOARD_H
 
-enum base_layers {
-  _QWERTY,
-  _WINDOWS_QWERTY,
-  _COLEMAK_DH,
-  _GAMING_QWERTY
-}
-
 enum layers {
     _QWERTY = 0,
     _LOWER,
     _RAISE,
-    _ADJUST
+    _ADJUST,
+    _WINDOWS_QWERTY,
+    _COLEMAK_DH,
+    _GAMING_QWERTY
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -68,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT(
     _______,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,              KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, _______,   \
     _______,_______,_______,_______,_______,_______,            _______,_______,_______,KC_F11, KC_F12, _______,   \
-    _______,_______,_______,_______,_______,_______,            DF(_QWERTY),DF(_WINDOWS_QWERTY),DF(_COLEMAK_DH),DF(_GAMING_QWERTY),_______,_______,  \
+    _______,_______,_______,_______,_______,_______,            _______,DF(_QWERTY),DF(_WINDOWS_QWERTY),DF(_COLEMAK_DH),DF(_GAMING_QWERTY),_______,  \
                     _______,_______,                                            _______, _______,                  \
                                             _______,                    _______,                                   \
                                             _______,_______,    _______,_______,                                   \
@@ -111,8 +107,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
-
-void base_layer_up() {
 }
 
