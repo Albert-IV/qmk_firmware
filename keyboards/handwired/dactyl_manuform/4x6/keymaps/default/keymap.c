@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,                     KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_LSFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                           \
                             KC_LGUI,LT(_LOWER, KC_BSPACE),         LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,LT(_RAISE, KC_DELETE),         LT(_LOWER, KC_TAB),KC_END                             \
 ),
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LGUI, KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,                     KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_LSFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                           \
                             KC_LCTL,LT(_LOWER, KC_BSPACE),         LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,LT(_RAISE, KC_DELETE),         LT(_LOWER, KC_TAB),KC_END                             \
 ),
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_X,  KC_C,   KC_D,   KC_V,   KC_Z,                     KC_K,   KC_H,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_LSFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                           \
                             KC_LGUI,LT(_LOWER, KC_BSPACE),         LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,LT(_RAISE, KC_DELETE),         LT(_LOWER, KC_TAB),KC_END                             \
 ),
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,                     KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_LSFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                           \
                             KC_SPC, KC_BSPACE,                     LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,KC_DELETE,                     LT(_LOWER, KC_TAB),KC_END                             \
 ),
@@ -95,9 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_ADJUST] = LAYOUT(
-    _______,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,              KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, _______,   \
-    _______,_______,_______,_______,_______,_______,            _______,_______,_______,KC_F11, KC_F12, _______,   \
-    _______,_______,_______,_______,_______,_______,            _______,DF(_QWERTY),DF(_WINDOWS_QWERTY),DF(_COLEMAK_DH),DF(_GAMING_QWERTY),_______,  \
+    _______,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,             _______,_______,_______,_______,_______, _______,   \
+    _______,KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10,            _______,DF(_QWERTY),DF(_WINDOWS_QWERTY),DF(_COLEMAK_DH),DF(_GAMING_QWERTY), _______,   \
+    _______,KC_F11, KC_F12, _______,_______,_______,           _______,_______,________,_______,_______,_______,  \
                     _______,_______,                                            _______, _______,                  \
                                             _______,                    _______,                                   \
                                             _______,_______,    _______,_______,                                   \
