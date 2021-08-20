@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,                     KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_RSHIFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                         \
                             KC_LGUI,LT(_LOWER, KC_BSPACE),         LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,LT(_RAISE, KC_DELETE),         LT(_LOWER, KC_TAB),KC_END                             \
 ),
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LGUI, KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,                     KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_RSHIFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                         \
                             KC_LCTL,LT(_LOWER, KC_BSPACE),         LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,LT(_RAISE, KC_DELETE),         LT(_LOWER, KC_TAB),KC_END                             \
 ),
@@ -55,10 +55,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_COLEMAK_DH] = LAYOUT( \
     KC_ESC,  KC_Q,  KC_W,   KC_F,   KC_P,   KC_B,                     KC_J,   KC_L,   KC_U,   KC_Y,   KC_SCLN,KC_BSLASH, \
     KC_LSFT, KC_A,  KC_R,   KC_S,   KC_T,   KC_G,                     KC_M,   KC_N,   KC_E,   KC_I,   KC_O,   KC_QUOT,   \
-    KC_LCTL, KC_X,  KC_C,   KC_D,   KC_V,   KC_Z,                     KC_K,   KC_H,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
+    KC_LCTL, KC_Z,  KC_X,   KC_C,   KC_D,   KC_V,                     KC_K,   KC_H,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_RSHIFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                         \
                             KC_LGUI,LT(_LOWER, KC_BSPACE),         LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,LT(_RAISE, KC_DELETE),         LT(_LOWER, KC_TAB),KC_END                             \
 ),
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,                     KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,KC_MINS,   \
                     KC_LCBR,KC_LPRN,                                                  KC_RPRN,KC_RCBR,                   \
                                                                                                                          \
-                            KC_LALT,                                                  KC_RSHIFT,                           \
+                            KC_LALT,                                                  KC_RSHIFT,                         \
                             KC_SPC, KC_BSPACE,                     LT(_RAISE, KC_ENT),KC_SPC,                            \
                             KC_HOME,KC_DELETE,                     LT(_LOWER, KC_TAB),KC_END                             \
 ),
