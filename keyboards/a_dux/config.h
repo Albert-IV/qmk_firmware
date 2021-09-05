@@ -63,11 +63,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
+
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
 /* Serial settings */
 #define USE_SERIAL
+
 /* serial.c configuration for split keyboard */
 #define SOFT_SERIAL_PIN D1
 
