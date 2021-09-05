@@ -8,11 +8,13 @@ AKA A. dux, A.D., "Giant squid"
 
 Thank you [Perce](https://madebyperce.com/) for the logo.
 
-Cases can be found here:
+### Cases can be found here:
 
 * [Flat Case](https://github.com/madebyperce/aduxcase)
 * [Tented Case](https://github.com/jdart/adux-tent)
 * [Case with Plates](https://github.com/sadekbaroudi/cephalopoda/tree/main/Architeuthis%20dux/case)
+
+### Keyboard Info
 
 * Keyboard Maintainer: [tapioki](https://github.com/tapioki)
 * Hardware Supported: Architeuthis Dux
