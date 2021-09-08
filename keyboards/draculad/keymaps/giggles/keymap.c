@@ -20,9 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 enum layer_number {
   _BASE,
-  _SYMB,
   _NUM,
-  _MUS,
+  _SYMB,
   _ADJ
 };
 
@@ -34,30 +33,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,         KC_W,    KC_E,             KC_R,              KC_T,                        KC_Y,            KC_U,           KC_I,              KC_O,    KC_P,
         LSFT_T(KC_A), KC_S,    KC_D,             KC_F,              KC_G,                        KC_H,            KC_J,           KC_K,              KC_L,    MOD_RSFT(KC_SCLN),
         LCTL_T(KC_Z), KC_X,    MOD_LALT(KC_C),   MOD_LGUI(KC_V),    KC_B,                        KC_N,            MOD_RGUI(KC_M), MOD_RALT(KC_COMM), KC_DOT,  MOD_RCTL(KC_SLSH),
-                                                                    KC_MUTE,                     TG(_ADJ),
+                                                                    KC_MUTE,                     XXXXXXX,
                                XXXXXXX,          LALT_T(KC_ESC),    LT(_SYMB,KC_BSPC),           LT(_NUM,KC_ENT), LT(_SYMB,KC_SPC), XXXXXXX
     ),
-
-/*
- * Lower Layer: Symbols
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |  !   |  @   |  {   |  }   |  |   |                              |      |      |      |      |      |  | \   |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  #   |  $   |  (   |  )   |  `   |                              |   +  |  -   |  /   |  *   |  %   |  ' "   |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |  %   |  ^   |  [   |  ]   |  ~   |      |      |  |      |      |   &  |  =   |  ,   |  .   |  / ? | - _    |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |  ;   |  =   |  |  =   |  ;   |      |      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
-    /* [_LOWER] = LAYOUT( */
-    /*   _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     _______, _______, _______, _______, _______, KC_BSLS, */
-    /*   _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, KC_QUOT, */
-    /*   _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______, _______, _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS, */
-    /*                              _______, _______, _______, KC_SCLN, KC_EQL,  KC_EQL,  KC_SCLN, _______, _______, _______ */
-    /* ), */
     [_SYMB] = LAYOUT(
         KC_EXLM,   KC_AT,   KC_GRV,  KC_PLUS, KC_SLSH,                       KC_BSLS, KC_AMPR, KC_TILD,  KC_EQL, KC_PIPE,
         KC_HASH,  KC_DLR,   KC_LPRN, KC_LCBR, KC_LBRC,                       KC_RBRC, KC_RCBR, KC_RPRN, KC_CIRC, KC_PERC,
@@ -67,25 +45,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NUM] = LAYOUT(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-        KC_TAB,  XXXXXXX, KC_VOLD, KC_VOLU, XXXXXXX,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_QUOT,
-        KC_LSFT, XXXXXXX, XXXXXXX, KC_MUTE, RESET,                        KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_RSFT,
-                                            XXXXXXX,                      KC_NO,
-                                   XXXXXXX, KC_LALT, XXXXXXX,    _______, KC_ENT,  KC_NO
-    ),
-    [_MUS] = LAYOUT(
-        KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_LALT, KC_BTN3, KC_BTN2, KC_BTN1, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX  XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLU,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_QUOT,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD,                      KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_RSFT,
                                             XXXXXXX,                      XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
+                                XXXXXXX, XXXXXXX, LT(_ADJ, KC_DELETE),    LT(_ADJ, KC_TAB), XXXXXXX, XXXXXXX
     ),
     [_ADJ] = LAYOUT(
-        RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        EEP_RST, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      RGB_MOD,  RGB_HUI, RGB_SAI, RGB_VAI, RGB_TOG,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,
-                                            XXXXXXX,                      _______,
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,
+        RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD,                      XXXXXXX,  XXXXXXX, XXXXXXX, KC_F11,  KC_F12,
+        XXXXXXX, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD,                     XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX,                      XXXXXXX,
                                    XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
     )
+
+
+    /* Layer Template */
+
+    /* [NAME] = LAYOUT( */
+    /*     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, */
+    /*     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, */
+    /*     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, */
+    /*                                         XXXXXXX,                      XXXXXXX, */
+    /*                                XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX */
+    /* ) */
 };
 
 #ifdef OLED_DRIVER_ENABLE
@@ -195,9 +177,6 @@ static void render_status(void) {
             break;
         case _ADJ:
             oled_write_P(PSTR("Adjust "), false);
-            break;
-        case _MUS:
-            oled_write_P(PSTR("Mouse  "), false);
             break;
         default:
             oled_write_P(PSTR("Unkn "), false);
