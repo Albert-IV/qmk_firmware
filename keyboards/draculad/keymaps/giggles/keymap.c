@@ -42,16 +42,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|                              |------+------+------+------+------|
  * |   #  |   $  |   (  |   {  |   [  |                              |   ]  |   }  |   )  |   %  |   '  |
  * |------+------+------+------+------|                              +------+------+------+------+------|
- * |      |      |      |   ^  |   -  |                              |   _  |   *  |      |      |      |
+ * |      |      |      |   ^  |   _  |                              |   -  |   *  |      |      |      |
  * `----------------------------------+------+                +------+----------------------------------+
- *                      |      |      |      |                | TAB  |      |      |
  *                      |      |      |      |                |      |      |      |
  *                      `--------------------'                `--------------------'
  */
     [_SYMB] = LAYOUT(
         KC_EXLM,         KC_AT,   KC_GRV,  KC_PLUS,         KC_SLSH,                       KC_BSLS, KC_AMPR,         KC_TILD, KC_EQL,  KC_PIPE,
         LSFT_T(KC_HASH), KC_DLR,  KC_LPRN, KC_LCBR,         KC_LBRC,                       KC_RBRC, KC_RCBR,         KC_RPRN, KC_PERC, RSFT_T(KC_QUOT),
-        KC_LCTL,         XXXXXXX, KC_LALT, LGUI_T(KC_CIRC), KC_MINUS,                      KC_UNDS, RGUI_T(KC_ASTR), KC_RALT, XXXXXXX, KC_RCTL,
+        KC_LCTL,         XXXXXXX, KC_LALT, LGUI_T(KC_CIRC), KC_UNDS,                       KC_MINUS, RGUI_T(KC_ASTR), KC_RALT, XXXXXXX, KC_RCTL,
                                                             XXXXXXX,                       XXXXXXX,
                                                    XXXXXXX, XXXXXXX, XXXXXXX,     LT(_ADJ, KC_TAB), XXXXXXX, XXXXXXX
     ),
