@@ -36,12 +36,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                     KC_MUTE,                     XXXXXXX,
                                XXXXXXX,          LT(_NUM,KC_ESC),   LT(_SYMB,KC_BSPC),           LT(_NUM,KC_ENT), LT(_SYMB, KC_SPC), XXXXXXX
     ),
+/*
+ * ,----------------------------------.                              ,----------------------------------.
+ * |   !  |   @  |   `  |   +  |   /  |                              |   \  |   &  |   ~  |   =  |   |  |
+ * |------+------+------+------+------|                              |------+------+------+------+------|
+ * |   #  |   $  |   (  |   {  |   [  |                              |   ]  |   }  |   )  |   %  |   '  |
+ * |------+------+------+------+------|                              +------+------+------+------+------|
+ * |      |      |      |   ^  |   -  |                              |   _  |   *  |      |      |      |
+ * `----------------------------------+------+                +------+----------------------------------+
+ *                      |      |      |      |                | TAB  |      |      |
+ *                      |      |      |      |                |      |      |      |
+ *                      `--------------------'                `--------------------'
+ */
     [_SYMB] = LAYOUT(
-        KC_EXLM,   KC_AT,   KC_GRV,  KC_PLUS, KC_SLSH,                       KC_BSLS, KC_AMPR, KC_TILD,  KC_EQL, KC_PIPE,
-        KC_HASH,  KC_DLR,   KC_LPRN, KC_LCBR, KC_LBRC,                       KC_RBRC, KC_RCBR, KC_RPRN, KC_CIRC, KC_PERC,
-        XXXXXXX, XXXXXXX,   XXXXXXX, KC_MINUS,XXXXXXX,                       XXXXXXX, KC_UNDS, KC_ASTR, XXXXXXX, XXXXXXX,
-                                              XXXXXXX,                       XXXXXXX,
-                                     XXXXXXX, XXXXXXX, XXXXXXX,     LT(_ADJ, KC_TAB), XXXXXXX, XXXXXXX
+        KC_EXLM,         KC_AT,   KC_GRV,  KC_PLUS,         KC_SLSH,                       KC_BSLS, KC_AMPR,         KC_TILD, KC_EQL,  KC_PIPE,
+        LSFT_T(KC_HASH), KC_DLR,  KC_LPRN, KC_LCBR,         KC_LBRC,                       KC_RBRC, KC_RCBR,         KC_RPRN, KC_PERC, RSFT_T(KC_QUOT),
+        KC_LCTL,         XXXXXXX, KC_LALT, LGUI_T(KC_CIRC), KC_MINUS,                      KC_UNDS, RGUI_T(KC_ASTR), KC_RALT, XXXXXXX, KC_RCTL,
+                                                            XXXXXXX,                       XXXXXXX,
+                                                   XXXXXXX, XXXXXXX, XXXXXXX,     LT(_ADJ, KC_TAB), XXXXXXX, XXXXXXX
     ),
     [_NUM] = LAYOUT(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
@@ -59,7 +71,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 
 
-    /* Layer Template */
+    /* Layer Template 
+     *
+     * ,----------------------------------.                              ,----------------------------------.
+     * |      |      |      |      |      |                              |      |      |      |      |      |
+     * |------+------+------+------+------|                              |------+------+------+------+------|
+     * |      |      |      |      |      |                              |      |      |      |      |      |
+     * |------+------+------+------+------|                              +------+------+------+------+------|
+     * |      |      |      |      |      |                              |      |      |      |      |      |
+     * `----------------------------------+------+                +------+----------------------------------+
+     *                      |      |      |      |                |      |      |      |
+     *                      `--------------------'                `--------------------'
+     */
 
     /* [NAME] = LAYOUT( */
     /*     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, */
