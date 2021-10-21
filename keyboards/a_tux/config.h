@@ -27,8 +27,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT      a_tux
 
 /* key matrix size */
-#define MATRIX_ROWS 4
-#define MATRIX_COLS 10
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 5
 
 /*
  * Keyboard Matrix Assignments
@@ -40,17 +40,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { D6, D7, D8, D9 }
-#define MATRIX_COL_PINS { D10, D16, D14, D15, D18 }
+#define MATRIX_ROW_PINS { B1, B3, B2, B6 }
+#define MATRIX_COL_PINS { B5, B4, E6, D7, C6}
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
-#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION ROW2COL
 
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
  */
-#define SOFT_SERIAL_PIN D2  // or D1, D2, D3, E6
+#define SOFT_SERIAL_PIN D1  // or D1, D2, D3, E6
 
 //#define LED_NUM_LOCK_PIN B0
 //#define LED_CAPS_LOCK_PIN B1
