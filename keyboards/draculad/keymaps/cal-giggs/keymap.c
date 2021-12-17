@@ -3,16 +3,16 @@
 #include "oneshot.h"
 #include "swapper.h"
 
-#define HOME G(KC_LEFT)
-#define END G(KC_RGHT)
-#define FWD G(KC_RBRC)
-#define BACK G(KC_LBRC)
-#define TABL G(S(KC_LBRC))
-#define TABR G(S(KC_RBRC))
-#define SPCL A(G(KC_LEFT))
+#define SPC_L A(G(KC_LEFT))
 #define SPC_R A(G(KC_RGHT))
+#define SPC_U A(G(KC_UP))
+#define SPC_D A(G(KC_DOWN))
+#define WIN_D_L C(G(KC_LEFT))
+#define WIN_D_R C(G(KC_RIGHT))
 #define LA_SYM MO(SYM)
 #define LA_NAV MO(NAV)
+
+#define COMBO_COUNT 4
 
 enum layers {
     DEF,
@@ -32,39 +32,88 @@ enum keycodes {
     SW_LANG, // Switch to next input language (ctl-spc)
 };
 
+const uint16_t PROGMEM ESC_COMBO[] = {KC_Q, KC_A, COMBO_END};
+const uint16_t PROGMEM ENTER_COMBO[] = {KC_P, KC_SCOLON, COMBO_END};
+
+const uint16_t PROGMEM TAB_COMBO[] = {KC_R, KC_F, COMBO_END};
+const uint16_t PROGMEM SHIFT_TAB_COMBO[] = {KC_U, KC_J, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO(ESC_COMBO, KC_ESC),
+  COMBO(ENTER_COMBO, KC_ENTER),
+  COMBO(TAB_COMBO, KC_TAB),
+  COMBO(SHIFT_TAB_COMBO, LSFT(KC_TAB)),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEF] = LAYOUT(
-        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCOLON,
-        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-                                               KC_MUTE,     XXXXXXX,
-        XXXXXXX,    KC_LSFT, LT(LA_NAV, KC_BSPC),                LT(LA_SYM, KC_SPC),  KC_ENT,  XXXXXXX
+         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCOLON,
+         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+                                          XXXXXXX,   XXXXXXX,
+                       XXXXXXX,     KC_LSFT, LA_NAV, LA_SYM,  KC_SPC,  XXXXXXX
     ),
 
     [SYM] = LAYOUT(
-        KC_ESC,  KC_LBRC, KC_LCBR, KC_LPRN, KC_TILD,             KC_CIRC, KC_RPRN,        KC_RCBR,       KC_RBRC,       KC_GRV,
-        KC_MINS, KC_ASTR, KC_EQL,  KC_UNDS, KC_DLR,              KC_HASH, OSM(MOD_RGUI),  OSM(MOD_RALT), OSM(MOD_RSFT), OSM(MOD_RCTL),
-        KC_PLUS, KC_PIPE, KC_AT,   KC_BSLS, KC_PERC,             XXXXXXX, KC_AMPR,        KC_SCLN,       KC_COLN,       KC_EXLM,
-                                               XXXXXXX,     XXXXXXX,
-                       _______,    _______, _______,             _______, _______, _______
+    
+        KC_EXLM, KC_LBRC, KC_LCBR, KC_LPRN, KC_TILD, KC_CIRC, KC_RPRN, KC_RCBR, KC_RBRC, KC_QUOT,
+        KC_MINS, KC_ASTR, KC_EQL,  KC_UNDS, KC_DLR,  KC_HASH, OS_CMD,  OS_ALT,  OS_SHFT, OS_CTRL, 
+        KC_PLUS, KC_PIPE, KC_AT,   KC_BSLS, KC_PERC, KC_GRV,  KC_SLSH, KC_AMPR, XXXXXXX, XXXXXXX,
+                                            _______, _______,
+                          _______, _______, _______, _______, _______, _______
     ),
 
     [NAV] = LAYOUT(
-        KC_TAB,        SW_WIN,        TABL,          TABR,           KC_VOLU,             RESET,   HOME,    KC_CAPS, END,     KC_DEL,
-        OSM(MOD_LCTL), OSM(MOD_LSFT), OSM(MOD_LALT), OSM(MOD_LGUI),  KC_VOLD,             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,
-        SPCL,          SPC_R,         BACK,          FWD,            KC_MPLY,             XXXXXXX, KC_PGDN, KC_PGUP, SW_LANG, KC_ENT,
-                                                                         XXXXXXX,     XXXXXXX,
-                                                _______,    _______, _______,             _______, _______, _______
+        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+        OS_CTRL, OS_SHFT, OS_ALT,  OS_CMD,  KC_VOLU, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC,
+        SPC_L,   SPC_D,   SPC_U,   SPC_R,   KC_VOLD, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_DEL,
+                                            _______, _______,
+                          _______, _______, _______, _______, _______, _______
     ),
 
     [NUM] = LAYOUT(
-        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-        OSM(MOD_LCTL), OSM(MOD_LSFT), OSM(MOD_LALT), OSM(MOD_LGUI),  KC_F11,  KC_F12,  OSM(MOD_RGUI),  OSM(MOD_RALT), OSM(MOD_RSFT), OSM(MOD_RCTL),        
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,
-                                               XXXXXXX,     XXXXXXX,
-                       _______,    _______, _______,             _______, _______, _______
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,  KC_F8,    KC_F9,   KC_F10,
+        OS_CTRL, OS_SHFT, OS_ALT,  OS_CMD,  KC_F11,  KC_F12,  OS_CMD, OS_ALT,   OS_SHFT, OS_CTRL,
+        RGB_VAI, RGB_SAI, RGB_HUI, WIN_D_L, RGB_MOD, RGB_TOG, WIN_D_R,RGB_HUD,  RGB_SAD, RGB_VAD,
+                                            _______, _______,
+                          _______, _______, _______, _______, _______, _______
     ),
 };
+
+
+/* const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { */
+/*     [DEF] = LAYOUT( */
+/*         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, */
+/*         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCOLON, */
+/*         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, */
+/*                                                KC_MUTE,     XXXXXXX, */
+/*         XXXXXXX,    KC_LSFT, LT(LA_NAV, KC_BSPC),                LT(LA_SYM, KC_SPC),  KC_ENT,  XXXXXXX */
+/*     ), */
+
+/*     [SYM] = LAYOUT( */
+/*         KC_ESC,  KC_LBRC, KC_LCBR, KC_LPRN, KC_TILD,             KC_CIRC, KC_RPRN,        KC_RCBR,       KC_RBRC,       KC_GRV, */
+/*         KC_MINS, KC_ASTR, KC_EQL,  KC_UNDS, KC_DLR,              KC_HASH, OSM(MOD_RGUI),  OSM(MOD_RALT), OSM(MOD_RSFT), OSM(MOD_RCTL), */
+/*         KC_PLUS, KC_PIPE, KC_AT,   KC_BSLS, KC_PERC,             XXXXXXX, KC_AMPR,        KC_SCLN,       KC_COLN,       KC_EXLM, */
+/*                                                XXXXXXX,     XXXXXXX, */
+/*                        _______,    _______, _______,             _______, _______, _______ */
+/*     ), */
+
+/*     [NAV] = LAYOUT( */
+/*         KC_TAB,        SW_WIN,        TABL,          TABR,           KC_VOLU,             RESET,   HOME,    KC_CAPS, END,     KC_DEL, */
+/*         OSM(MOD_LCTL), OSM(MOD_LSFT), OSM(MOD_LALT), OSM(MOD_LGUI),  KC_VOLD,             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC, */
+/*         SPCL,          SPC_R,         BACK,          FWD,            KC_MPLY,             XXXXXXX, KC_PGDN, KC_PGUP, SW_LANG, KC_ENT, */
+/*                                                                          XXXXXXX,     XXXXXXX, */
+/*                                                 _______,    _______, _______,             _______, _______, _______ */
+/*     ), */
+
+/*     [NUM] = LAYOUT( */
+/*         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, */
+/*         OSM(MOD_LCTL), OSM(MOD_LSFT), OSM(MOD_LALT), OSM(MOD_LGUI),  KC_F11,  KC_F12,  OSM(MOD_RGUI),  OSM(MOD_RALT), OSM(MOD_RSFT), OSM(MOD_RCTL), */        
+/*         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10, */
+/*                                                XXXXXXX,     XXXXXXX, */
+/*                        _______,    _______, _______,             _______, _______, _______ */
+/*     ), */
+/* }; */
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
