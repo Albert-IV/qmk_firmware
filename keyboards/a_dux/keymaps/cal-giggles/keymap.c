@@ -31,7 +31,7 @@ enum keycodes {
 };
 
 const uint16_t PROGMEM ESC_COMBO[] = {KC_Q, KC_A, COMBO_END};
-const uint16_t PROGMEM ENTER_COMBO[] = {KC_P, KC_SCOLON, COMBO_END};
+const uint16_t PROGMEM ENTER_COMBO[] = {KC_P, KC_QUOTE, COMBO_END};
 
 const uint16_t PROGMEM TAB_COMBO[] = {KC_R, KC_F, COMBO_END};
 const uint16_t PROGMEM SHIFT_TAB_COMBO[] = {KC_U, KC_J, COMBO_END};
